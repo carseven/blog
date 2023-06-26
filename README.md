@@ -1,51 +1,66 @@
-# Astroship - Astro Starter Template 🛸
+# carles.pro
 
-Astroship is a starter template for startups, marketing websites, landing pages & blog. Built with Astro & TailwindCSS.
+Personal blog
 
-This Free Template is sponsored by [Web3Templates](https://web3templates.com)
+## TODO
 
-## Live Demo
+### Infra
 
-### [https://astroship.web3templates.com/](https://astroship.web3templates.com/)
+- [ ] Setup CI/CD pipelines and infra
+- [ ] Design system (Tailwind CSS probably)
+- [ ] Buy domain and configure DNS
+- [ ] Localization - i18n
+- [ ] Image optimization pipeline
+- [ ] Serverless lambdas infra
+- [ ] Database
+- [ ] CRON - Automate retrieve articles from notion (For temporally editing from there)
+- [ ] Setup backend monorepo
 
-### [Download Astroship Template](https://web3templates.com/templates/astroship-starter-website-template-for-astro)
+### Features
 
-## Deploy this template
+- Top banner
+- Footer
+- Main page
+  - [ ] Contact info
+  - [ ] Basic description
+  - [ ] Last activity
+  - [ ] Social media
+  - [ ] Blogs
+  - [ ] Projects
+  - [ ] Form for having the email store
+- Blog section and templates
+- Projects section and main page show case
+- Search
+- Dark mode and light mode (Manual and system auto selection)
+  - [ ] Selector animation and styling
+  - [ ] Theme configuration
+- Linktree page (Custom)
+- URL shortener and redirection
 
-You can instantly clone this to your GitHub and deploy the site by clicking the below buttons to deploy to your chosen providers!
+### Articles
+- [ ] Dotfiles automation using deno
+- [ ] Typescript books (Review and recommendations, top best tips and tricks, etc)
+- [ ] Keyboard and dotfiles explained (Macos and Windows)
+- [ ] Typescript challenges - Best tips and trick and best top challenges, etc.
+- [ ] Minimalist node backend framework (Type safety, documentation open api, and drizzle for SQL)
+- SQL tips and tricks
 
-Click here to deploy on Vercel:
+## Design and user experience
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fsurjithctly%2Fastroship&project-name=astroship&repository-name=astroship&demo-title=Astroship%20-%20Astro%20Starter%20Template&demo-description=Astroship%20is%20a%20starter%20template%20for%20startups%2C%20marketing%20websites%20%26%20landing%20pages.%20Built%20with%20Astro%2C%20TailwindCSS&demo-url=https%3A%2F%2Fastroship.web3templates.com%2F&demo-image=https%3A%2F%2Fuser-images.githubusercontent.com%2F1884712%2F200831799-10ef2456-a02e-4068-b580-4b5326f0b33b.png)
+- Colorful
+- Fun and playful
+- With transitions
+- With page transitions
 
-Click here to deploy on Netlify:
+## References
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/surjithctly/astroship)
+The idea is to have UI(theme/layout) similar of Josh Blog and for the reading, content, searching experience as SST and starlight.
 
-## Preview
+- [Josh blog](https://github.com/joshmedeski/joshmedeski.com)
+- [Star link template](https://github.com/withastro/starlight/tree/main/examples/basics)
+- [SST Docs](https://docs.sst.dev/start/standalone)
+- [Anthony Fo Blog](https://antfu.me/)
 
-![image](https://user-images.githubusercontent.com/1884712/200831799-10ef2456-a02e-4068-b580-4b5326f0b33b.png)
-
-### Pagespeed Score
-
-[![pagespeed](https://user-images.githubusercontent.com/1884712/210250214-7aa98167-7993-4b90-8138-326b8fa0c223.png)](https://pagespeed.web.dev/report?url=https%3A%2F%2Fastroship.web3templates.com%2F)
-
-
-## Installation
-
-If you are reading this on github, you can click on the "Use this template" button above to create a new repository from astroship to your account. Then you can do a `git clone` to clone it to your local system.
-
-Alternatively, you can clone the project directly from this repo to your local system.
-
-### 1. Clone the repo
-
-```bash
-git clone https://github.com/surjithctly/astroship.git myProjectName
-# or
-git clone https://github.com/surjithctly/astroship.git .
-```
-
-The `.` will clone it to the current directory so make sure you are inside your project folder first.
 
 ### 2. Install Dependencies
 
