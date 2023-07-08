@@ -28,15 +28,17 @@ const makeTitle = title
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- Only use view transitions in this origin -->
+    <meta name="view-transition" content="same-origin" />
     <meta name="generator" content={Astro.generator} />
 
     <!-- <link rel="preload" as="image" href={src} alt="Hero" /> -->
     <SEO
       title={makeTitle}
-      description="Astroship is a starter website template for Astro built with TailwindCSS."
+      description="Carles Serra"
       canonical={canonicalURL}
       twitter={{
-        creator: "@surjithctly",
+        creator: "@carseven_code",
         site: "@web3templates",
         card: "summary_large_image",
       }}
@@ -52,17 +54,46 @@ const makeTitle = title
         },
       }}
     />
-  </head>
+
+    <!-- View transitions -->
+    <script>
+      if (document.startViewTransition) {
+        window.navigation.addEventListener("navigate", (event) => {
+          const toUrl = new URL(event.destination.url);
+
+          // es una página externa? si es así, lo ignoramos
+          if (location.origin !== toUrl.origin) return;
+
+          // si es una navegación en el mismo dominio (origen)
+          event.intercept({
+            async handler() {
+              // vamos a cargar la página de destino
+              // utilizando un fetch para obtener el HTML
+              const response = await fetch(toUrl.pathname); // /clean-code
+              const text = await response.text();
+              // quedarnos sólo con el contenido del html dentro de la etiqueta body
+              // usamos un regex para extraerlo
+              const [, data] = text.match(/<body>([\s\S]*)<\/body>/i);
+
+              // utilizar la api de View Transition API
+              document.startViewTransition(() => {
+                // el scroll hacia arriba del todo
+                document.body.innerHTML = data;
+
+                // If transition from blog post to blog main
+                // Mantain scroll position where it was
+                document.documentElement.scrollTop = 0;
+              });
+            },
+          });
+        });
+      }
+    </script></head
+  >
+
   <body>
     <Navbar />
     <slot />
     <Footer />
-    <style is:global>
-      /* Improve Page speed */
-      /* https://css-tricks.com/almanac/properties/c/content-visibility/ */
-      img {
-        content-visibility: auto;
-      }
-    </style>
   </body>
 </html>

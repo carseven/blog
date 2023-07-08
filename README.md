@@ -7,7 +7,7 @@ Personal blog
 ### Infra
 
 - [ ] Setup CI/CD pipelines and infra
-- [ ] Design system (Tailwind CSS probably)
+- [x] Design system (Tailwind CSS probably) and use flowbite
 - [ ] Buy domain and configure DNS
 - [ ] Localization - i18n
 - [ ] Image optimization pipeline
@@ -23,7 +23,6 @@ Personal blog
 - Main page
   - [ ] Contact info
   - [ ] Basic description
-  - [ ] Last activity
   - [ ] Social media
   - [ ] Blogs
   - [ ] Projects
@@ -38,6 +37,7 @@ Personal blog
 - URL shortener and redirection
 
 ### Articles
+
 - [ ] Dotfiles automation using deno
 - [ ] Typescript books (Review and recommendations, top best tips and tricks, etc)
 - [ ] Keyboard and dotfiles explained (Macos and Windows)
@@ -60,7 +60,6 @@ The idea is to have UI(theme/layout) similar of Josh Blog and for the reading, c
 - [Star link template](https://github.com/withastro/starlight/tree/main/examples/basics)
 - [SST Docs](https://docs.sst.dev/start/standalone)
 - [Anthony Fo Blog](https://antfu.me/)
-
 
 ### 2. Install Dependencies
 

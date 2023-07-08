@@ -43,6 +43,7 @@ publishedBlogEntries.sort(function (a, b) {
                     loading={index <= 2 ? "eager" : "lazy"}
                     decoding={index <= 2 ? "sync" : "async"}
                     class="w-full rounded-md"
+                    style={`view-transition-name: blog-${blogPostEntry.slug}`}
                   />
                   <div>
                     <span class="text-blue-400 uppercase tracking-wider text-sm font-medium">
