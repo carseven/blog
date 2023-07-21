@@ -6,15 +6,10 @@ Personal blog
 
 ### Infra
 
-- [ ] Setup CI/CD pipelines and infra
+- [ ] Setup CI/CD pipelines and infra (Linter, format, unit testing, e2e testing)
 - [x] Design system (Tailwind CSS probably) and use flowbite
 - [ ] Buy domain and configure DNS
-- [ ] Localization - i18n
-- [ ] Image optimization pipeline
-- [ ] Serverless lambdas infra
-- [ ] Database
-- [ ] CRON - Automate retrieve articles from notion (For temporally editing from there)
-- [ ] Setup backend monorepo
+- [x] Image optimization pipeline (Already done with astro)
 
 ### Features
 
@@ -26,13 +21,13 @@ Personal blog
   - [ ] Social media
   - [ ] Blogs
   - [ ] Projects
-  - [ ] Form for having the email store
 - Blog section and templates
 - Projects section and main page show case
 - Search
 - Dark mode and light mode (Manual and system auto selection)
   - [ ] Selector animation and styling
   - [ ] Theme configuration
+  - View transition API
 - Linktree page (Custom)
 - URL shortener and redirection
 
