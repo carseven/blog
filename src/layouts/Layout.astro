@@ -1,8 +1,8 @@
 ---
-import { SEO } from "astro-seo";
 import Footer from "@components/footer.astro";
 import Navbar from "@components/navbar/navbar.astro";
 import "@fontsource/inter/variable.css";
+import { SEO } from "astro-seo";
 
 export interface Props {
   title: string;
@@ -17,9 +17,7 @@ const resolvedImageWithDomain = new URL(
 
 const { title } = Astro.props;
 
-const makeTitle = title
-  ? title + " | " + "Astroship"
-  : "Astroship - Starter Template for Astro with Tailwind CSS";
+const makeTitle = title ? title + " | " + "Carles Serra" : "Carles Serra";
 ---
 
 <!DOCTYPE html>
@@ -39,18 +37,18 @@ const makeTitle = title
       canonical={canonicalURL}
       twitter={{
         creator: "@carseven_code",
-        site: "@web3templates",
+        site: "@carseven_code",
         card: "summary_large_image",
       }}
       openGraph={{
         basic: {
           url: canonicalURL,
           type: "website",
-          title: `Astroship - Starter Template for Astro`,
+          title: `Carles Serra`,
           image: resolvedImageWithDomain,
         },
         image: {
-          alt: "Astroship Homepage Screenshot",
+          alt: "Carles Serra Blog page screenshot",
         },
       }}
     />
