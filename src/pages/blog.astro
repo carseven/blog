@@ -1,9 +1,9 @@
 ---
-import { getCollection } from "astro:content";
 import { Picture } from "@astrojs/image/components";
-import Layout from "@layouts/Layout.astro";
 import Container from "@components/container.astro";
 import Sectionhead from "@components/sectionhead.astro";
+import Layout from "@layouts/Layout.astro";
+import { getCollection } from "astro:content";
 
 // Filter blog entries with 'draft: false' & date before current date
 const publishedBlogEntries = await getCollection("blog", ({ data }) => {
@@ -19,9 +19,10 @@ publishedBlogEntries.sort(function (a, b) {
 <Layout title="Blog">
   <Container>
     <Sectionhead>
-      <Fragment slot="title">Our Blog</Fragment>
+      <Fragment slot="title">Blog</Fragment>
       <Fragment slot="desc">
-        We write about building startups and thoughts going on our mind.
+        I write about my thoughts, my experiences and experiments in the world
+        of programming.
       </Fragment>
     </Sectionhead>
     <main class="mt-16">
@@ -32,7 +33,7 @@ publishedBlogEntries.sort(function (a, b) {
               <a href={`/blog/${blogPostEntry.slug}`}>
                 <div class="grid md:grid-cols-2 gap-5 md:gap-10 items-center">
                   <Picture
-                    src={blogPostEntry.data.image.src}
+                    src={import(blogPostEntry.data.image.src)}
                     alt={blogPostEntry.data.image.alt}
                     sizes="(max-width: 800px) 100vw, 800px"
                     widths={[200, 400, 800]}
