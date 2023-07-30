@@ -2,7 +2,7 @@
 draft: false
 title: "Typescript simple conditional"
 image:
-  { src: "/public/ConditionalProps.png", alt: "full stack web development" }
+  { src: "/assets/ConditionalProps.png", alt: "full stack web development" }
 publishDate: "2023-07-23 09:00"
 category: "Tutorials"
 author: "Carles"
