@@ -4,7 +4,7 @@ title: "Typescript simple conditional"
 image:
   { src: "/assets/ConditionalProps.png", alt: "full stack web development" }
 publishDate: "2023-07-23 09:00"
-category: "Tutorials"
+category: "tech"
 author: "Carles"
 tags: [Typescript, Type system, Type safe]
 ---
