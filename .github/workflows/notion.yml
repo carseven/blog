@@ -1,4 +1,4 @@
-name: Daily email
+name: Retrieve Notion Blog Post
 
 # Controls when the workflow will run
 on:
