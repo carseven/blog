@@ -26,6 +26,5 @@ jobs:
       - name: Get environment variables
         env:
           NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
-        env:
           BLOG_DB_ID: ${{ secrets.BLOG_DB_ID }}
         run: pnpm run notion
