@@ -37,9 +37,17 @@ for (const dbRow of dbRows) {
     author: "",
     tags: [],
   };
+
   for (const propertyKey in properties) {
     const propType = properties[propertyKey].type;
     const propValue = properties[propertyKey][propType];
+
+    if (propertyKey === "title") {
+      const { plain_text: alt } = propValue[0];
+      headerProps.title = alt;
+      continue;
+    }
+
     if (propertyKey === "author") {
       const { name } = propValue;
       headerProps.author = name;
