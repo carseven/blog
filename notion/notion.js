@@ -24,24 +24,66 @@ for (const dbRow of dbRows) {
   const mdString = n2m.toMarkdownString(mdblocks);
 
   // MAP Notion properties to BLOG post metadata
-  const headerProps = {
-    draft: false,
-    title: "Example",
-    image: {
-      src: "/assets/ConditionalProps.png",
-      alt: "Example",
-    },
-    publishDate: "2024-01-01",
-    category: "Tech",
-    author: "Carles Serra",
-    tags: ["Typescript", "Type Safety"],
-  };
   // Map notion database properties to MD header props
-  // for (const propertyKey in properties) {
-  //   const prop = properties[propertyKey];
-  //   if (propertyKey === "draft") {
-  //   }
-  // }
+  const headerProps = {
+    draft: true,
+    title: "",
+    image: {
+      src: "",
+      alt: "",
+    },
+    publishDate: "",
+    category: "",
+    author: "",
+    tags: [],
+  };
+  for (const propertyKey in properties) {
+    const propType = properties[propertyKey].type;
+    const propValue = properties[propertyKey][propType];
+    if (propertyKey === "author") {
+      const { name } = propValue;
+      headerProps.author = name;
+      continue;
+    }
+
+    if (propertyKey === "draft") {
+      headerProps.draft = propValue;
+      continue;
+    }
+
+    if (propertyKey === "tags") {
+      headerProps.tags = propValue.map((tag) => {
+        return tag.name;
+      });
+      continue;
+    }
+
+    if (propertyKey === "imageUrl") {
+      // Probably more than one image could be upload, but just use the first one
+      const { name: imageFileName, file } = propValue[0];
+      const imageURL = file.url;
+      const imageResponse = await fetch(imageURL);
+      const imageBlob = await imageResponse.blob();
+      fs.writeFileSync(
+        `public/assets/${imageFileName}`,
+        Buffer.from(await imageBlob.arrayBuffer())
+      );
+      headerProps.image.src = `/assets/${imageFileName}`;
+      continue;
+    }
+
+    if (propertyKey === "imageAlt") {
+      const { plain_text: alt } = propValue[0];
+      headerProps.image.alt = alt;
+      continue;
+    }
+
+    if (propertyKey === "publishDate") {
+      const { start: publishDate } = propValue;
+      headerProps.publishDate = publishDate;
+      continue;
+    }
+  }
 
   const header = `---
 draft: ${headerProps.draft}
@@ -64,7 +106,4 @@ tags: [${headerProps.tags
     `src/content/blog/${"example-todo-retrieve-name"}.md`,
     header + mdString.parent
   );
-
-  console.log(header + mdString.parent);
-  // Inject header with the properties
 }
