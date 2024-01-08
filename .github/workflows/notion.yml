@@ -9,8 +9,12 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  notion-blog:
     runs-on: ubuntu-latest
+    permissions:
+      # Give the default GITHUB_TOKEN write permission to commit and push the
+      # added or changed files to the repository.
+      contents: write
     steps:
       - uses: actions/checkout@v3
       - uses: pnpm/action-setup@v2
@@ -20,11 +24,15 @@ jobs:
         with:
           node-version: 20.x
           cache: "pnpm"
-
       - run: pnpm install --frozen-lockfile
-
-      - name: Get environment variables
+      - name: Generate blog post from notion
         env:
           NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
           BLOG_DB_ID: ${{ secrets.BLOG_DB_ID }}
         run: pnpm run notion
+        # Commit all changed files back to the repository
+        # DOC:  https://github.com/stefanzweifel/git-auto-commit-action
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: Add new notion blog post [bot]
+          file_pattern: "src/content/blog*.md public/assets/*"
