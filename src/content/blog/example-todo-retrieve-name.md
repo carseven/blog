@@ -1,6 +1,6 @@
 ---
 draft: false
-title: ""
+title: "Example"
 image:
   { src: "/assets/ConditionalProps.png", alt: "Image alt" }
 publishDate: "2024-01-07"
