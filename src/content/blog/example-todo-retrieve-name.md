@@ -2,7 +2,7 @@
 draft: false
 title: "Example"
 image:
-  { src: "/assets/ConditionalProps.png", alt: "Image alt" }
+  { src: "/assets/comoda-despefecto-cerca.jpeg", alt: "Image alt" }
 publishDate: "2024-01-07"
 category: ""
 author: "Carles Serra"
