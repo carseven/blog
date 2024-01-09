@@ -9,7 +9,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "notion": "node notion/notion.js"
+    "notion": "node scripts/notion.js",
+    "compress-images": "node scripts/compress-images.js"
   },
   "dependencies": {
     "@astrojs/image": "^0.14.1",

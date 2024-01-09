@@ -2,6 +2,11 @@ import { Client } from "@notionhq/client";
 import "dotenv/config";
 import fs from "node:fs";
 import { NotionToMarkdown } from "notion-to-md";
+import sharp from "sharp";
+
+// Maximum width and height for resizing
+const maxWidth = 800;
+const maxHeight = 600;
 
 // Initializing a client
 const notion = new Client({
@@ -38,6 +43,15 @@ for (const dbRow of dbRows) {
     tags: [],
   };
 
+  console.log(properties);
+
+  // Ignore draft pages
+  const isDraft = properties.draft["checkbox"];
+  if (isDraft) {
+    console.log("[DRAFT]: SKIP BLOG POST");
+    continue;
+  }
+
   for (const propertyKey in properties) {
     const propType = properties[propertyKey].type;
     const propValue = properties[propertyKey][propType];
@@ -49,7 +63,7 @@ for (const dbRow of dbRows) {
     }
 
     if (propertyKey === "author") {
-      const { name } = propValue;
+      const { name } = propValue || "";
       headerProps.author = name;
       continue;
     }
@@ -60,27 +74,39 @@ for (const dbRow of dbRows) {
     }
 
     if (propertyKey === "tags") {
-      headerProps.tags = propValue.map((tag) => {
+      headerProps.tags = (propValue || []).map((tag) => {
         return tag.name;
       });
       continue;
     }
 
     if (propertyKey === "imageUrl") {
-      // Probably more than one image could be upload, but just use the first one
       const { name: imageFileName, file } = propValue[0];
-      const imageURL = file.url;
+      const imageURL = file?.url;
       const imageResponse = await fetch(imageURL);
       const imageBlob = await imageResponse.blob();
-      fs.writeFileSync(
-        `public/assets/${imageFileName}`,
-        Buffer.from(await imageBlob.arrayBuffer())
-      );
-      headerProps.image.src = `/assets/${imageFileName}`;
+
+      // Compress images
+      const imageBuffer = Buffer.from(await imageBlob.arrayBuffer());
+
+      const compressedImage = await sharp(imageBuffer)
+        .resize(maxWidth, maxHeight, {
+          fit: "inside",
+          withoutEnlargement: true,
+        })
+        .webp({ quality: 80 }) // Convert to WebP format
+        .toBuffer();
+
+      const imagePath = `/assets/${imageFileName.split(".")[0]}.webp`;
+      fs.writeFileSync(`public${imagePath}`, compressedImage);
+      headerProps.image.src = imagePath;
       continue;
     }
 
     if (propertyKey === "imageAlt") {
+      if (!propValue[0]) {
+        continue;
+      }
       const { plain_text: alt } = propValue[0];
       headerProps.image.alt = alt;
       continue;
@@ -114,4 +140,5 @@ tags: [${headerProps.tags
     `src/content/blog/${"example-todo-retrieve-name"}.md`,
     header + mdString.parent
   );
+  console.log(headerProps);
 }
