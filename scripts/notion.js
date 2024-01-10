@@ -25,8 +25,8 @@ for (const dbRow of dbRows) {
 
   console.log(`RETRIEVE PAGE ${id}`);
 
-  const mdblocks = await n2m.pageToMarkdown(id);
-  const mdString = n2m.toMarkdownString(mdblocks);
+  const mdBlocks = await n2m.pageToMarkdown(id);
+  const mdString = n2m.toMarkdownString(mdBlocks);
 
   // MAP Notion properties to BLOG post metadata
   // Map notion database properties to MD header props
