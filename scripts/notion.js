@@ -43,8 +43,6 @@ for (const dbRow of dbRows) {
     tags: [],
   };
 
-  console.log(properties);
-
   // Ignore draft pages
   const isDraft = properties.draft["checkbox"];
   if (isDraft) {
