@@ -9,3 +9,13 @@ Less concerned with telling a story or addressing a specific use case, they shou
 ## Further reading
 
 - Read [about reference](https://diataxis.fr/reference/) in the Diátaxis framework
+
+
+```mermaid
+flowchart TD
+    A[Start] --> B{Is it working?}
+    B -- Yes --> C[Great!]
+    B -- No --> D[Check the logs]
+    D --> E[Fix the issue]
+    E --> B
+```
