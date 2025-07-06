@@ -24,6 +24,10 @@ export default defineConfig({
           href: "https://www.linkedin.com/in/carles-serra-vendrell/",
         },
       ],
+      editLink: {
+        baseUrl:
+          "https://github.com/carseven/blog/edit/main",
+      },
       sidebar: [
         {
           label: "Guides",
