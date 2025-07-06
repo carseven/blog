@@ -19,3 +19,5 @@ flowchart TD
     D --> E[Fix the issue]
     E --> B
 ```
+[[/guides/example]]
+Reference [guides example](/guides/example) for more information.
